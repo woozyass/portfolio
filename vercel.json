@@ -11,6 +11,10 @@
   ],
   "routes": [
     {
+      "src": "/photos/(.*)",
+      "dest": "/photos/$1"
+    },
+    {
       "src": "/static/(.*)",
       "dest": "/static/$1"
     },
