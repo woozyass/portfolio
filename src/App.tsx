@@ -4,13 +4,13 @@ import { Link, animateScroll as scroll } from 'react-scroll';
 
 const glowAnimation = keyframes`
   0% {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
   }
   50% {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
   }
   100% {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
   }
 `;
 
@@ -536,12 +536,6 @@ const EmailLink = styled.a`
 `;
 
 const App: React.FC = () => {
-  const [hoveredStates, setHoveredStates] = useState<{ [key: string]: number | null }>({
-    info: null,
-    services: null,
-    projects: null,
-    contact: null
-  });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [visibleSections, setVisibleSections] = useState({
     info: false,
@@ -550,7 +544,6 @@ const App: React.FC = () => {
     contact: false
   });
   const [displayedInfoText, setDisplayedInfoText] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
   const linkRefs = useRef<{ [key: string]: Link | null }>({});
   const [isContactHovered, setIsContactHovered] = useState(false);
   const infoText = "Hi, I'm Christian! I build apps and website :D";
@@ -609,46 +602,6 @@ const App: React.FC = () => {
     };
   }, [visibleSections.info]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>, text: string, section: string) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const charWidth = rect.width / text.length;
-    const index = Math.floor(x / charWidth);
-    setHoveredStates(prev => ({
-      ...prev,
-      [section]: index
-    }));
-  };
-
-  const handleMouseLeave = (section: string) => {
-    setHoveredStates(prev => ({
-      ...prev,
-      [section]: null
-    }));
-  };
-
-  const renderNavLink = (to: string, text: string) => (
-    <NavLink 
-      to={to} 
-      smooth={true} 
-      duration={500}
-      ref={(el: Link | null): void => {
-        linkRefs.current[to] = el;
-      }}
-      onMouseMove={(e: React.MouseEvent<HTMLButtonElement>) => handleMouseMove(e, text, to)}
-      onMouseLeave={() => handleMouseLeave(to)}
-    >
-      {text.split('').map((char, index) => (
-        <NavLinkText 
-          key={index} 
-          isGlowing={hoveredStates[to] === index}
-        >
-          {char}
-        </NavLinkText>
-      ))}
-    </NavLink>
-  );
-
   const handleImageClick = (imageSrc: string) => {
     setSelectedImage(imageSrc);
   };
@@ -671,6 +624,19 @@ const App: React.FC = () => {
   const handleResumeClick = () => {
     window.open('/Alejandro_CV.pdf', '_blank');
   };
+
+  const renderNavLink = (to: string, text: string) => (
+    <NavLink 
+      to={to} 
+      smooth={true} 
+      duration={500}
+      ref={(el: Link | null): void => {
+        linkRefs.current[to] = el;
+      }}
+    >
+      {text}
+    </NavLink>
+  );
 
   return (
     <AppContainer>
