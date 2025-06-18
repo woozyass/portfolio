@@ -669,7 +669,7 @@ const App: React.FC = () => {
   };
 
   const handleResumeClick = () => {
-    window.open('/resume.pdf', '_blank');
+    window.open('/Alejandro_CV.pdf', '_blank');
   };
 
   return (
