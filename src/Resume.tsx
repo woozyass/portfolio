@@ -9,12 +9,13 @@ const PageWrapper = styled.div`
 
 const ResumeContainer = styled.div`
   background-color: #000000;
-  color: #ffffff;
+  color: #f8f8f8;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 4rem;
   max-width: 900px;
   margin: 2rem auto;
   border-radius: 8px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.12);
 
   @media (max-width: 768px) {
     padding: 2rem;
@@ -35,8 +36,10 @@ const Header = styled.header`
 
 const Name = styled.h1`
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 0.5rem;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
 
   @media (max-width: 480px) {
     font-size: 1.3rem;
@@ -45,7 +48,8 @@ const Name = styled.h1`
 
 const ContactInfo = styled.p`
   font-size: 1.1rem;
-  color: #cccccc;
+  color: #bdbdbd;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.10);
 
   @media (max-width: 480px) {
     font-size: 0.75rem;
@@ -62,6 +66,8 @@ const SectionTitle = styled.h2`
   border-bottom: 1px solid #ffffff;
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
 
   @media (max-width: 480px) {
     font-size: 1.1rem;
@@ -78,6 +84,7 @@ const EducationEntry = styled.div`
 const SchoolName = styled.h3`
   font-size: 1.2rem;
   font-weight: 500;
+  color: #f8f8f8;
 
   @media (max-width: 480px) {
     font-size: 0.9rem;
@@ -86,7 +93,7 @@ const SchoolName = styled.h3`
 
 const Degree = styled.p`
   font-size: 1.1rem;
-  color: #cccccc;
+  color: #bdbdbd;
 
   @media (max-width: 480px) {
     font-size: 0.75rem;
@@ -106,6 +113,7 @@ const Skill = styled.li`
   padding: 0.75rem;
   border-radius: 6px;
   text-align: center;
+  color: #f8f8f8;
 
   @media (max-width: 480px) {
     font-size: 0.8rem;
@@ -135,11 +143,19 @@ const JobHeader = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
 `;
 
 const JobTitle = styled.h3`
   font-size: 1.3rem;
   font-weight: 500;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
 
   @media (max-width: 480px) {
     font-size: 1rem;
@@ -148,7 +164,7 @@ const JobTitle = styled.h3`
 
 const JobLocation = styled.p`
   font-size: 1rem;
-  color: #cccccc;
+  color: #bdbdbd;
   text-align: right;
 
   @media (max-width: 480px) {
@@ -160,7 +176,7 @@ const JobCompany = styled.p`
   font-size: 1.1rem;
   font-style: italic;
   margin-bottom: 0.25rem;
-  color: #e0e0e0;
+  color: #d6d6d6;
 
   @media (max-width: 480px) {
     font-size: 0.8rem;
@@ -169,7 +185,7 @@ const JobCompany = styled.p`
 
 const JobDate = styled.p`
   font-size: 1rem;
-  color: #cccccc;
+  color: #bdbdbd;
   margin-bottom: 1rem;
 
   @media (max-width: 480px) {
@@ -180,7 +196,8 @@ const JobDate = styled.p`
 const JobDescription = styled.ul`
   list-style-type: disc;
   padding-left: 20px;
-  color: #e0e0e0;
+  color: #ededed;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.10);
 
   li {
     margin-bottom: 0.5rem;
@@ -207,6 +224,7 @@ const ReferenceName = styled.h3`
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+  color: #f8f8f8;
 
   @media (max-width: 480px) {
     font-size: 0.9rem;
@@ -215,7 +233,7 @@ const ReferenceName = styled.h3`
 
 const ReferenceDetail = styled.p`
   font-size: 1rem;
-  color: #cccccc;
+  color: #bdbdbd;
   line-height: 1.5;
 
   @media (max-width: 480px) {
