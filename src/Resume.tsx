@@ -295,6 +295,27 @@ const IconLink = styled.a`
   }
 `;
 
+const DownloadButton = styled.a`
+  display: inline-block;
+  margin: 1rem 0 2rem 0;
+  padding: 0.4rem 1.2rem;
+  background: transparent;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid #555;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+  cursor: pointer;
+
+  &:hover {
+    background: #222;
+    color: #fff;
+    border: 1px solid #888;
+  }
+`;
+
 const Resume: React.FC = () => {
   return (
     <PageWrapper>
@@ -303,6 +324,9 @@ const Resume: React.FC = () => {
           <Name>John Christian Alejandro</Name>
           <ContactInfo>(+63) 977-423-8913 | alejandro.jchristian@gmail.com</ContactInfo>
         </Header>
+        <DownloadButton href="/JCJA_Portfolio.pdf" download>
+          Download PDF
+        </DownloadButton>
 
         <Section>
           <SectionTitle>Education</SectionTitle>
