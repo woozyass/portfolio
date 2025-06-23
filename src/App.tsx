@@ -56,6 +56,21 @@ const NavBar = styled.nav`
   align-items: center;
   gap: 30px;
   white-space: nowrap;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    gap: 15px;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+  }
+
+  @media (max-width: 480px) {
+    gap: 10px;
+    padding: 10px;
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -70,6 +85,16 @@ const NavLink = styled(Link)`
   padding: 5px 10px;
   white-space: nowrap;
   letter-spacing: 0.5px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    padding: 3px 8px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    padding: 2px 6px;
+  }
 `;
 
 const NavLinkText = styled.span<{ isGlowing: boolean }>`
@@ -88,6 +113,14 @@ const Section = styled.section<{ isVisible: boolean }>`
   opacity: ${props => props.isVisible ? 1 : 0};
   transform: translateY(${props => props.isVisible ? '0' : '20px'});
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  @media (max-width: 768px) {
+    padding: 60px 15px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 40px 10px;
+  }
 `;
 
 const InfoSection = styled.section<{ isVisible: boolean }>`
@@ -100,6 +133,14 @@ const InfoSection = styled.section<{ isVisible: boolean }>`
   opacity: ${props => props.isVisible ? 1 : 0};
   transform: translateY(${props => props.isVisible ? '0' : '50px'});
   transition: all 0.5s ease-out;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const ServicesSection = styled.section<{ isVisible: boolean }>`
@@ -112,12 +153,24 @@ const ServicesSection = styled.section<{ isVisible: boolean }>`
   opacity: ${props => props.isVisible ? 1 : 0};
   transform: translateY(${props => props.isVisible ? '0' : '50px'});
   transition: all 0.5s ease-out;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const ServicesContainer = styled.div`
   max-width: 800px;
   width: 100%;
   text-align: center;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 const AboutText = styled.p`
@@ -125,6 +178,16 @@ const AboutText = styled.p`
   line-height: 1.8;
   color: #ffffff;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 `;
 
 const ResumeButton = styled.button`
@@ -159,6 +222,16 @@ const ResumeButton = styled.button`
       transform: translateX(100%);
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const ProjectsSection = styled(Section)`
@@ -168,6 +241,16 @@ const ProjectsSection = styled(Section)`
   overflow: hidden;
   position: relative;
   padding: 80px 0;
+
+  @media (max-width: 768px) {
+    gap: 40px;
+    padding: 60px 0;
+  }
+
+  @media (max-width: 480px) {
+    gap: 30px;
+    padding: 40px 0;
+  }
 `;
 
 const ProjectsContainer = styled.div`
@@ -207,6 +290,28 @@ const ProjectsContainer = styled.div`
       background: rgba(255, 255, 255, 0.3);
     }
   }
+
+  @media (max-width: 768px) {
+    gap: 20px;
+    padding: 15px 0;
+    
+    &::before,
+    &::after {
+      flex: 0 0 calc((100% - 600px) / 2);
+      min-width: calc((100% - 600px) / 2);
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 15px;
+    padding: 10px 0;
+    
+    &::before,
+    &::after {
+      flex: 0 0 calc((100% - 400px) / 2);
+      min-width: calc((100% - 400px) / 2);
+    }
+  }
 `;
 
 const ContactSection = styled.section<{ isVisible: boolean }>`
@@ -219,6 +324,10 @@ const ContactSection = styled.section<{ isVisible: boolean }>`
   transition: all 0.6s ease-out;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    min-height: 80vh;
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -233,6 +342,16 @@ const InfoText = styled.div`
   color: white;
   position: relative;
   display: inline-block;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    min-height: 80px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    min-height: 60px;
+  }
 `;
 
 const Cursor = styled.span`
@@ -259,6 +378,18 @@ const ProjectCard = styled.div`
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.1);
   scroll-snap-align: center;
+
+  @media (max-width: 768px) {
+    width: 600px;
+    flex: 0 0 600px;
+    padding: 30px;
+  }
+
+  @media (max-width: 480px) {
+    width: 400px;
+    flex: 0 0 400px;
+    padding: 20px;
+  }
 `;
 
 const ProjectTitle = styled.h2`
@@ -267,6 +398,16 @@ const ProjectTitle = styled.h2`
   color: #ffffff;
   font-weight: 600;
   letter-spacing: -0.5px;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
 `;
 
 const ProjectDescription = styled.p`
@@ -277,6 +418,16 @@ const ProjectDescription = styled.p`
   max-width: 800px;
   font-weight: 300;
   letter-spacing: 0.2px;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+  }
 `;
 
 const TechStack = styled.div`
@@ -284,6 +435,16 @@ const TechStack = styled.div`
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
 `;
 
 const TechBadge = styled.span`
@@ -296,6 +457,16 @@ const TechBadge = styled.span`
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-weight: 500;
   letter-spacing: 0.3px;
+
+  @media (max-width: 768px) {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3px 6px;
+    font-size: 0.6rem;
+  }
 `;
 
 const GalleryContainer = styled.div`
@@ -305,6 +476,18 @@ const GalleryContainer = styled.div`
   gap: 20px;
   width: 100%;
   margin-top: 20px;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 10px;
+    margin-top: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
 `;
 
 const GalleryImage = styled.img<{ isLarge?: boolean }>`
@@ -318,6 +501,11 @@ const GalleryImage = styled.img<{ isLarge?: boolean }>`
 
   &:hover {
     transform: scale(1.02);
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 8px;
+    height: 200px;
   }
 `;
 
@@ -468,6 +656,30 @@ const ContactButton = styled.button<{ isHovered: boolean }>`
   &:hover::before {
     opacity: 1;
   }
+
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 35px;
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    &:hover {
+      width: 250px;
+      height: 70px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+
+    &:hover {
+      width: 200px;
+      height: 60px;
+    }
+  }
 `;
 
 const ContactText = styled.span<{ isHovered: boolean }>`
@@ -491,6 +703,14 @@ const ContactIcons = styled.div<{ isHovered: boolean }>`
   opacity: ${props => props.isHovered ? 1 : 0};
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translate(-50%, -50%) scale(${props => props.isHovered ? 1 : 0.8});
+
+  @media (max-width: 768px) {
+    gap: 80px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 60px;
+  }
 `;
 
 const Icon = styled.div`
@@ -509,6 +729,18 @@ const Icon = styled.div`
     transform: scale(1.1);
     background: rgba(255, 255, 255, 0.15);
   }
+
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+    padding: 6px;
+  }
+
+  @media (max-width: 480px) {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+  }
 `;
 
 const Footer = styled.footer`
@@ -521,6 +753,20 @@ const Footer = styled.footer`
   flex-direction: column;
   gap: 8px;
   z-index: 10;
+
+  @media (max-width: 768px) {
+    bottom: 15px;
+    left: 15px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  @media (max-width: 480px) {
+    bottom: 10px;
+    left: 10px;
+    font-size: 10px;
+    gap: 4px;
+  }
 `;
 
 const FooterText = styled.div`
@@ -691,10 +937,10 @@ const App: React.FC = () => {
 
       <InfoSection id="info" isVisible={visibleSections.info}>
         <InfoContainer>
-          <InfoText>
+        <InfoText>
             {displayedInfoText}
             <Cursor />
-          </InfoText>
+        </InfoText>
         </InfoContainer>
       </InfoSection>
 
