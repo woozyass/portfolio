@@ -253,6 +253,7 @@ const ProjectsSection = styled(Section)`
   padding: 80px 0;
   overflow-x: hidden;
   overflow-y: visible;
+  margin-bottom: 0;
 
   @media (max-width: 768px) {
     gap: 40px;
@@ -262,6 +263,8 @@ const ProjectsSection = styled(Section)`
   @media (max-width: 480px) {
     gap: 30px;
     padding: 40px 0;
+    font-size: 1.2rem;
+    min-height: 50px;
   }
 `;
 
@@ -402,9 +405,17 @@ const ContactSection = styled.section<{ isVisible: boolean }>`
   transition: all 0.6s ease-out;
   position: relative;
   overflow: hidden;
+  z-index: 20;
+  margin: 0;
 
   @media (max-width: 768px) {
     min-height: 80vh;
+  }
+  @media (max-width: 480px) {
+    min-height: 100vh;
+    height: 100vh;
+    position: relative;
+    margin: 0;
   }
 `;
 
