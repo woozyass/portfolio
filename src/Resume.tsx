@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link as RouterLink } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
 
 const PageWrapper = styled.div`
   background-color: #000000;
@@ -298,9 +297,8 @@ const IconLink = styled.a`
 `;
 
 const FloatingDownloadButton = styled.a`
-  position: fixed;
-  bottom: 168px;
-  right: 60px;
+  position: static;
+  margin-top: 2rem;
   z-index: 100;
   padding: 0.7rem 1.3rem;
   font-size: 1.05rem;
@@ -327,14 +325,10 @@ const FloatingDownloadButton = styled.a`
   }
 
   @media (max-width: 768px) {
-    bottom: 110px;
-    right: 30px;
-    padding: 0.5rem 0.9rem;
-    font-size: 0.97rem;
-  }
-  @media (max-width: 480px) {
+    position: fixed;
     bottom: 76px;
     right: 12px;
+    margin-top: 0;
     padding: 0.4rem 0.6rem;
     font-size: 0.88rem;
   }
@@ -360,21 +354,15 @@ const HomeButton = styled(RouterLink)`
   }
 `;
 
-const ResumeExtraStyles = createGlobalStyle`
-  .resume-bottom-spacer {
-    height: 180px;
-  }
-  @media (max-width: 480px) {
-    .resume-bottom-spacer {
-      height: 60px;
-    }
-  }
+const DownloadButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
 `;
 
 const Resume: React.FC = () => {
   return (
     <PageWrapper>
-      <ResumeExtraStyles />
       <ResumeContainer>
         <HomeButton to="/">← Home</HomeButton>
         <Header>
@@ -528,12 +516,14 @@ const Resume: React.FC = () => {
               <ReferenceDetail>+639495918439</ReferenceDetail>
             </ReferenceEntry>
           </ReferencesContainer>
+          <DownloadButtonWrapper>
+            <FloatingDownloadButton href="JCJA_Portfolio.pdf" download>
+              Download PDF
+            </FloatingDownloadButton>
+          </DownloadButtonWrapper>
         </Section>
       </ResumeContainer>
-      <div style={{ height: '180px' }} className="resume-bottom-spacer" />
-      <FloatingDownloadButton href="JCJA_Portfolio.pdf" download>
-        Download PDF
-      </FloatingDownloadButton>
+      <div style={{ height: '40px' }} />
       <Footer>
         <FooterText>Christian</FooterText>
         <IconLink href="https://www.linkedin.com/in/john-christian-a-842882249/" target="_blank" rel="noopener noreferrer">
