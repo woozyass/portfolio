@@ -332,77 +332,101 @@ const Resume: React.FC = () => {
         <Section>
           <SectionTitle>Professional Experience</SectionTitle>
           <ExperienceEntry>
-            <JobHeader>
-              <JobTitle>Full Stack Developer</JobTitle>
-              <JobCompany>Fitera</JobCompany>
-              <JobLocation>Ortigas, Pasig City</JobLocation>
-              <JobDate>April 2025 - Present</JobDate>
-            </JobHeader>
+            <div className="job-header-wrapper">
+              <JobHeader>
+                <JobTitle>Full-Stack Developer</JobTitle>
+                <JobCompany>Fitera Systems, Inc.</JobCompany>
+                <JobLocation>Ortigas, Pasig City</JobLocation>
+                <JobDate>May 2025 – Present</JobDate>
+              </JobHeader>
+            </div>
             <JobDescription>
-              <li>Developed the website of the company using React/NodeJS.</li>
-              <li>Maintains website and creates new posting for company updates.</li>
+              <li>Developed and maintained the company website using React and Node.js.</li>
+              <li>Created new postings for company updates and ensured website reliability.</li>
             </JobDescription>
           </ExperienceEntry>
 
           <ExperienceEntry>
-            <JobHeader>
-              <JobTitle>Frontend Developer</JobTitle>
-              <JobCompany>Speedrent Technologies</JobCompany>
-              <JobLocation>Kuala Lumpur, Malaysia</JobLocation>
-              <JobDate>June 2023 - Present</JobDate>
-            </JobHeader>
+            <div className="job-header-wrapper">
+              <JobHeader>
+                <JobTitle>Software Developer</JobTitle>
+                <JobCompany>Speedrent Technologies</JobCompany>
+                <JobLocation>Kuala Lumpur, Malaysia</JobLocation>
+                <JobDate>Oct 2023 – Present</JobDate>
+              </JobHeader>
+            </div>
             <JobDescription>
               <li>Developed user-facing features using Next.js to ensure seamless user experiences.</li>
               <li>Optimized components for performance across various devices and browsers.</li>
               <li>Collaborated with backend developers and designers to enhance usability.</li>
             </JobDescription>
           </ExperienceEntry>
-          
+
           <ExperienceEntry>
-            <JobHeader>
-              <JobTitle>Teammate - Subject Matter Expert</JobTitle>
-              <JobCompany>Task Us</JobCompany>
-              <JobLocation>Ortigas, Pasig City</JobLocation>
-              <JobDate>June 2022 - August 2023</JobDate>
-            </JobHeader>
+            <div className="job-header-wrapper">
+              <JobHeader>
+                <JobTitle>Teammate - Subject Matter Expert</JobTitle>
+                <JobCompany>TaskUs</JobCompany>
+                <JobLocation>Ortigas, Pasig City</JobLocation>
+                <JobDate>Jun 2022 – Aug 2023</JobDate>
+              </JobHeader>
+            </div>
             <JobDescription>
-              <li>Produced Quality service with by the book information.</li>
-              <li>Assisted customers in a daily basis without compromising adherence and performance.</li>
-              <li>Provides assistance to teammates to ensure team growth and stability in scores.</li>
+              <li>Produced quality service with by-the-book information.</li>
+              <li>Assisted customers daily without compromising adherence and performance.</li>
+              <li>Provided assistance to teammates to ensure team growth and stability in scores.</li>
             </JobDescription>
           </ExperienceEntry>
 
           <ExperienceEntry>
-            <JobHeader>
-              <JobTitle>Subject Matter Expert</JobTitle>
-              <JobCompany>KGB Philippines</JobCompany>
-              <JobLocation>Pasig City</JobLocation>
-              <JobDate>December 2019 - June 2022</JobDate>
-            </JobHeader>
+            <div className="job-header-wrapper">
+              <JobHeader>
+                <JobTitle>Agent - Subject Matter Expert</JobTitle>
+                <JobCompany>Conduit Global</JobCompany>
+                <JobLocation></JobLocation>
+                <JobDate>Dec 2019 – Jun 2021</JobDate>
+              </JobHeader>
+            </div>
             <JobDescription>
-              <li>Providing the book information and ensuring strict adherence to agents.</li>
-              <li>Providing knowledge, resources and information to support agents.</li>
-              <li>Assist advisors with material requests and account updates.</li>
-              <li>Ensuring accuracy of the content.</li>
-              <li>Coaching and training agents on improving Customer Interaction and offering advisors guidance.</li>
-              <li>Show a comprehensive knowledge of products and services and their competitive advantages through continuous self-improvement and following quality standards.</li>
+              <li>Provided book information and ensured strict adherence to agents.</li>
+              <li>Supplied knowledge, resources, and information to support agents.</li>
+              <li>Assisted advisors with material requests and account updates.</li>
+              <li>Ensured accuracy of the content and coached agents on customer interaction.</li>
             </JobDescription>
           </ExperienceEntry>
 
           <ExperienceEntry>
-            <JobHeader>
-              <JobTitle>Customer Service Representative</JobTitle>
-              <JobCompany>GICF Inc</JobCompany>
-              <JobLocation>Pasig City</JobLocation>
-              <JobDate>June 2018 - July 2019</JobDate>
-            </JobHeader>
+            <div className="job-header-wrapper">
+              <JobHeader>
+                <JobTitle>Customer Service Representative</JobTitle>
+                <JobCompany>GICF</JobCompany>
+                <JobLocation>Pasig City</JobLocation>
+                <JobDate>Jun 2018 – Jul 2019</JobDate>
+              </JobHeader>
+            </div>
             <JobDescription>
-              <li>Providing excellent customer service to shopping company customers.</li>
-              <li>Keep records of customer interactions, process customer accounts and file documents.</li>
-              <li>Follow communication procedures, guidelines and policies.</li>
-              <li>Taking and providing the extra mile to engaged customers to provide satisfaction.</li>
-              <li>Helping them with their concerns and providing solutions to their problems.</li>
-              <li>Produce sales leads.</li>
+              <li>Provided excellent customer service to shopping company customers.</li>
+              <li>Kept records of customer interactions, processed accounts, and filed documents.</li>
+              <li>Followed communication procedures, guidelines, and policies.</li>
+              <li>Went the extra mile to engage customers and provide satisfaction.</li>
+              <li>Helped customers with concerns and provided solutions to their problems.</li>
+              <li>Produced sales leads.</li>
+            </JobDescription>
+          </ExperienceEntry>
+
+          <ExperienceEntry>
+            <div className="job-header-wrapper">
+              <JobHeader>
+                <JobTitle>Customer Service Representative</JobTitle>
+                <JobCompany>Sequential Technology International</JobCompany>
+                <JobLocation>Eastwood, Quezon City</JobLocation>
+                <JobDate>Jan 2016 – Apr 2017</JobDate>
+              </JobHeader>
+            </div>
+            <JobDescription>
+              <li>Handled customer inquiries and provided timely solutions.</li>
+              <li>Maintained high customer satisfaction ratings through effective communication.</li>
+              <li>Assisted in troubleshooting and resolving technical issues for clients.</li>
             </JobDescription>
           </ExperienceEntry>
         </Section>
@@ -417,11 +441,12 @@ const Resume: React.FC = () => {
             </ReferenceEntry>
             <ReferenceEntry>
               <ReferenceName>Vince Gerald Ong</ReferenceName>
+              <ReferenceDetail>TaskUs</ReferenceDetail>
               <ReferenceDetail>Email: vince.ong@taskus.com</ReferenceDetail>
             </ReferenceEntry>
             <ReferenceEntry>
               <ReferenceName>William Henry Federis</ReferenceName>
-              <ReferenceDetail>Senior Developer</ReferenceDetail>
+              <ReferenceDetail>White Cloak</ReferenceDetail>
               <ReferenceDetail>+639495918439</ReferenceDetail>
             </ReferenceEntry>
           </ReferencesContainer>
