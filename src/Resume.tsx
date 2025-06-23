@@ -5,12 +5,12 @@ const PageWrapper = styled.div`
   background-color: #000000;
   min-height: 100vh;
   padding: 1px 0; /* Prevents margin collapse */
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 `;
 
 const ResumeContainer = styled.div`
   background-color: #000000;
   color: #f8f8f8;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 4rem;
   max-width: 900px;
   margin: 2rem auto;
@@ -118,16 +118,6 @@ const Skill = styled.li`
   @media (max-width: 480px) {
     font-size: 0.8rem;
     padding: 0.5rem;
-  }
-`;
-
-const JobType = styled.p`
-  font-size: 1rem;
-  color: #8ecae6;
-  font-weight: 500;
-  margin-bottom: 0.1rem;
-  @media (max-width: 480px) {
-    font-size: 0.8rem;
   }
 `;
 
@@ -344,7 +334,6 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <JobHeader>
               <JobTitle>Full Stack Developer</JobTitle>
-              <JobType>Part-time</JobType>
               <JobCompany>Fitera</JobCompany>
               <JobLocation>Ortigas, Pasig City</JobLocation>
               <JobDate>April 2025 - Present</JobDate>
@@ -358,7 +347,6 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <JobHeader>
               <JobTitle>Frontend Developer</JobTitle>
-              <JobType>Full-time</JobType>
               <JobCompany>Speedrent Technologies</JobCompany>
               <JobLocation>Kuala Lumpur, Malaysia</JobLocation>
               <JobDate>June 2023 - Present</JobDate>
@@ -373,7 +361,6 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <JobHeader>
               <JobTitle>Teammate - Subject Matter Expert</JobTitle>
-              <JobType>Full-time</JobType>
               <JobCompany>Task Us</JobCompany>
               <JobLocation>Ortigas, Pasig City</JobLocation>
               <JobDate>June 2022 - August 2023</JobDate>
@@ -388,7 +375,6 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <JobHeader>
               <JobTitle>Subject Matter Expert</JobTitle>
-              <JobType>Full-time</JobType>
               <JobCompany>KGB Philippines</JobCompany>
               <JobLocation>Pasig City</JobLocation>
               <JobDate>December 2019 - June 2022</JobDate>
@@ -406,7 +392,6 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <JobHeader>
               <JobTitle>Customer Service Representative</JobTitle>
-              <JobType>Full-time</JobType>
               <JobCompany>GICF Inc</JobCompany>
               <JobLocation>Pasig City</JobLocation>
               <JobDate>June 2018 - July 2019</JobDate>
