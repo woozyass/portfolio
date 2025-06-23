@@ -43,6 +43,7 @@ const AppContainer = styled.div`
   line-height: 1.5;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  overflow-y: auto;
 `;
 
 const NavBar = styled.nav`
@@ -241,6 +242,8 @@ const ProjectsSection = styled(Section)`
   overflow: hidden;
   position: relative;
   padding: 80px 0;
+  overflow-x: hidden;
+  overflow-y: visible;
 
   @media (max-width: 768px) {
     gap: 40px;
@@ -257,6 +260,7 @@ const ProjectsContainer = styled.div`
   display: flex;
   gap: 40px;
   overflow-x: auto;
+  overflow-y: hidden;
   padding: 20px 0;
   width: 100%;
   max-width: 1400px;
@@ -312,6 +316,71 @@ const ProjectsContainer = styled.div`
       min-width: calc((100% - 400px) / 2);
     }
   }
+`;
+
+const NavigationButton = styled.button<{ direction: 'left' | 'right'; disabled: boolean }>`
+  position: absolute;
+  top: 50%;
+  ${props => props.direction === 'left' ? 'left: 20px;' : 'right: 20px;'}
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  opacity: ${props => props.disabled ? 0.3 : 1};
+
+  &:hover {
+    background: ${props => props.disabled ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.2)'};
+    transform: ${props => props.disabled ? 'translateY(-50%)' : 'translateY(-50%) scale(1.1)'};
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    ${props => props.direction === 'left' ? 'left: 10px;' : 'right: 10px;'}
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 35px;
+    height: 35px;
+    ${props => props.direction === 'left' ? 'left: 5px;' : 'right: 5px;'}
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+`;
+
+const ProjectsWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 `;
 
 const ContactSection = styled.section<{ isVisible: boolean }>`
@@ -807,6 +876,9 @@ const App: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const linkRefs = useRef<{ [key: string]: Link | null }>({});
   const [isContactHovered, setIsContactHovered] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const projectsContainerRef = useRef<HTMLDivElement>(null);
   const infoText = "Hi, I'm Christian! I build apps and website :D";
 
   useEffect(() => {
@@ -926,6 +998,42 @@ const App: React.FC = () => {
     window.open('/Alejandro_CV.pdf', '_blank');
   };
 
+  const checkScrollPosition = () => {
+    if (projectsContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = projectsContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+    }
+  };
+
+  const scrollProjects = (direction: 'left' | 'right') => {
+    if (projectsContainerRef.current) {
+      const container = projectsContainerRef.current;
+      const scrollAmount = 800; // Width of one project card
+      
+      if (direction === 'left') {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+      
+      // Check scroll position after animation
+      setTimeout(checkScrollPosition, 500);
+    }
+  };
+
+  useEffect(() => {
+    const container = projectsContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', checkScrollPosition);
+      checkScrollPosition(); // Initial check
+      
+      return () => {
+        container.removeEventListener('scroll', checkScrollPosition);
+      };
+    }
+  }, []);
+
   return (
     <AppContainer>
       <NavBar>
@@ -956,79 +1064,99 @@ const App: React.FC = () => {
       </ServicesSection>
 
       <ProjectsSection id="projects" isVisible={visibleSections.projects}>
-        <ProjectsContainer>
-          <ProjectCard>
-            <ProjectTitle>Rental Platform</ProjectTitle>
-            <ProjectDescription>
-              Developed a full-stack rental platform that connects property owners with potential tenants. 
-              The platform features a modern, user-friendly interface with advanced search capabilities, 
-              real-time availability tracking, and secure payment processing.
-            </ProjectDescription>
-            <TechStack>
-              <TechBadge>JavaScript</TechBadge>
-              <TechBadge>React</TechBadge>
-              <TechBadge>Node.js</TechBadge>
-              <TechBadge>Express</TechBadge>
-              <TechBadge>MongoDB</TechBadge>
-            </TechStack>
-            <GalleryContainer>
-              <LargeImageContainer>
+        <ProjectsWrapper>
+          <NavigationButton 
+            direction="left" 
+            disabled={!canScrollLeft}
+            onClick={() => scrollProjects('left')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </NavigationButton>
+          <ProjectsContainer ref={projectsContainerRef}>
+            <ProjectCard>
+              <ProjectTitle>Rental Platform</ProjectTitle>
+              <ProjectDescription>
+                Developed a full-stack rental platform that connects property owners with potential tenants. 
+                The platform features a modern, user-friendly interface with advanced search capabilities, 
+                real-time availability tracking, and secure payment processing.
+              </ProjectDescription>
+              <TechStack>
+                <TechBadge>JavaScript</TechBadge>
+                <TechBadge>React</TechBadge>
+                <TechBadge>Node.js</TechBadge>
+                <TechBadge>Express</TechBadge>
+                <TechBadge>MongoDB</TechBadge>
+              </TechStack>
+              <GalleryContainer>
+                <LargeImageContainer>
+                  <GalleryImage 
+                    src="/photos/photos_home.png" 
+                    alt="Rental Platform Home"
+                    onClick={() => handleImageClick('/photos/photos_home.png')}
+                    isLarge={true}
+                  />
+                </LargeImageContainer>
                 <GalleryImage 
-                  src="/photos/photos_home.png" 
-                  alt="Rental Platform Home"
-                  onClick={() => handleImageClick('/photos/photos_home.png')}
-                  isLarge={true}
+                  src="/photos/photos_listing.png" 
+                  alt="Rental Platform Listing"
+                  onClick={() => handleImageClick('/photos/photos_listing.png')}
                 />
-              </LargeImageContainer>
-              <GalleryImage 
-                src="/photos/photos_listing.png" 
-                alt="Rental Platform Listing"
-                onClick={() => handleImageClick('/photos/photos_listing.png')}
-              />
-              <GalleryImage 
-                src="/photos/photos_main.png" 
-                alt="Rental Platform Main"
-                onClick={() => handleImageClick('/photos/photos_main.png')}
-              />
-            </GalleryContainer>
-          </ProjectCard>
+                <GalleryImage 
+                  src="/photos/photos_main.png" 
+                  alt="Rental Platform Main"
+                  onClick={() => handleImageClick('/photos/photos_main.png')}
+                />
+              </GalleryContainer>
+            </ProjectCard>
 
-          <ProjectCard>
-            <ProjectTitle>E-commerce Platform</ProjectTitle>
-            <ProjectDescription>
-              Built a comprehensive e-commerce solution with features like real-time inventory management,
-              secure payment processing, and an intuitive admin dashboard. The platform includes advanced
-              product filtering, user reviews, and a responsive design optimized for all devices.
-            </ProjectDescription>
-            <TechStack>
-              <TechBadge>React</TechBadge>
-              <TechBadge>Node.js</TechBadge>
-              <TechBadge>PostgreSQL</TechBadge>
-              <TechBadge>Redux</TechBadge>
-              <TechBadge>Stripe</TechBadge>
-            </TechStack>
-            <GalleryContainer>
-              <LargeImageContainer>
+            <ProjectCard>
+              <ProjectTitle>E-commerce Platform</ProjectTitle>
+              <ProjectDescription>
+                Built a comprehensive e-commerce solution with features like real-time inventory management,
+                secure payment processing, and an intuitive admin dashboard. The platform includes advanced
+                product filtering, user reviews, and a responsive design optimized for all devices.
+              </ProjectDescription>
+              <TechStack>
+                <TechBadge>React</TechBadge>
+                <TechBadge>Node.js</TechBadge>
+                <TechBadge>PostgreSQL</TechBadge>
+                <TechBadge>Redux</TechBadge>
+                <TechBadge>Stripe</TechBadge>
+              </TechStack>
+              <GalleryContainer>
+                <LargeImageContainer>
+                  <GalleryImage 
+                    src="/photos/photos-home-2.png" 
+                    alt="E-commerce Home"
+                    onClick={() => handleImageClick('/photos/photos-home-2.png')}
+                    isLarge={true}
+                  />
+                </LargeImageContainer>
                 <GalleryImage 
-                  src="/photos/photos-home-2.png" 
-                  alt="E-commerce Home"
-                  onClick={() => handleImageClick('/photos/photos-home-2.png')}
-                  isLarge={true}
+                  src="/photos/photos-listing-2.png" 
+                  alt="E-commerce Products"
+                  onClick={() => handleImageClick('/photos/photos-listing-2.png')}
                 />
-              </LargeImageContainer>
-              <GalleryImage 
-                src="/photos/photos-listing-2.png" 
-                alt="E-commerce Products"
-                onClick={() => handleImageClick('/photos/photos-listing-2.png')}
-              />
-              <GalleryImage 
-                src="/photos/photos-main-2.png" 
-                alt="E-commerce Cart"
-                onClick={() => handleImageClick('/photos/photos-main-2.png')}
-              />
-            </GalleryContainer>
-          </ProjectCard>
-        </ProjectsContainer>
+                <GalleryImage 
+                  src="/photos/photos-main-2.png" 
+                  alt="E-commerce Cart"
+                  onClick={() => handleImageClick('/photos/photos-main-2.png')}
+                />
+              </GalleryContainer>
+            </ProjectCard>
+          </ProjectsContainer>
+          <NavigationButton 
+            direction="right" 
+            disabled={!canScrollRight}
+            onClick={() => scrollProjects('right')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path d="M9.59 7.41L11 6l6 6-6 6-1.41-1.41L13.17 12z"/>
+            </svg>
+          </NavigationButton>
+        </ProjectsWrapper>
       </ProjectsSection>
 
       <ContactSection id="contact" isVisible={visibleSections.contact}>
