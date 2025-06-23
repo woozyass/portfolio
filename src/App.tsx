@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { keyframes, css } from 'styled-components';
-import { Link, animateScroll as scroll } from 'react-scroll';
-import { Routes, Route, Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-scroll';
+import { Routes, Route, Link as RouterLink, useLocation } from 'react-router-dom';
 import Resume from './Resume';
 
 const glowAnimation = keyframes`
@@ -15,26 +15,6 @@ const glowAnimation = keyframes`
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
   }
 `;
-
-const blinkAnimation = keyframes`
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-`;
-
-const smoothScroll = {
-  duration: 1000,
-  smooth: true,
-  offset: -50,
-  spy: true,
-  hashSpy: true,
-  delay: 100,
-  isDynamic: true,
-  spyThrottle: 500
-};
 
 const AppContainer = styled.div`
   background-color: #000000;
@@ -645,66 +625,6 @@ const CloseButton = styled.button`
   z-index: 1001;
 `;
 
-const ProjectsTitle = styled.h2`
-  font-size: 2.5rem;
-  color: #ffffff;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  margin-bottom: 20px;
-  text-align: center;
-`;
-
-const bubbleSplit = keyframes`
-  0% {
-    clip-path: circle(50% at 50% 50%);
-    transform: scale(1);
-  }
-  50% {
-    clip-path: circle(40% at 50% 50%);
-    transform: scale(1.1);
-  }
-  100% {
-    clip-path: circle(0% at 50% 50%);
-    transform: scale(0);
-  }
-`;
-
-const bubbleMorph = keyframes`
-  0% {
-    clip-path: circle(50% at 50% 50%);
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    clip-path: ellipse(30% 50% at 50% 50%);
-    transform: scale(1.1);
-    opacity: 0.5;
-  }
-  100% {
-    clip-path: circle(0% at 50% 50%);
-    transform: scale(0);
-    opacity: 0;
-  }
-`;
-
-const bubbleFloat = keyframes`
-  0%, 100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-8px) scale(1.02);
-  }
-`;
-
-const shine = keyframes`
-  0% {
-    transform: translateX(-100%) rotate(45deg);
-  }
-  100% {
-    transform: translateX(100%) rotate(45deg);
-  }
-`;
-
 const ContactContainer = styled.div`
   position: relative;
   display: flex;
@@ -851,10 +771,8 @@ const Portfolio: React.FC = () => {
     contact: false
   });
   const [displayedInfoText, setDisplayedInfoText] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
   const linkRefs = useRef<{ [key: string]: Link | null }>({});
   const [isContactHovered, setIsContactHovered] = useState(false);
-  const [isResumeHovered, setIsResumeHovered] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const projectsContainerRef = useRef<HTMLDivElement>(null);
@@ -960,13 +878,6 @@ const Portfolio: React.FC = () => {
 
   const handleCloseModal = () => {
     setSelectedImage(null);
-  };
-
-  const handleScroll = (to: string) => {
-    const element = document.getElementById(to);
-    if (element) {
-      scroll.scrollTo(element.offsetTop, smoothScroll);
-    }
   };
 
   const handleEmailClick = (email: string) => {
@@ -1180,12 +1091,25 @@ const Portfolio: React.FC = () => {
   );
 };
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 const App: React.FC = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Portfolio />} />
-      <Route path="/resume" element={<Resume />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Portfolio />} />
+        <Route path="/resume" element={<Resume />} />
+      </Routes>
+    </>
   );
 };
 
