@@ -22,8 +22,9 @@ const ResumeContainer = styled.div`
   }
 
   @media (max-width: 480px) {
-    padding: 1.5rem;
-    margin: 0.5rem;
+    padding: 1rem;
+    margin: 0.25rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -36,11 +37,19 @@ const Name = styled.h1`
   font-size: 3rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 480px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const ContactInfo = styled.p`
   font-size: 1.1rem;
   color: #cccccc;
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+  }
 `;
 
 const Section = styled.section`
@@ -53,6 +62,10 @@ const SectionTitle = styled.h2`
   border-bottom: 1px solid #ffffff;
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const EducationEntry = styled.div`
@@ -65,11 +78,19 @@ const EducationEntry = styled.div`
 const SchoolName = styled.h3`
   font-size: 1.2rem;
   font-weight: 500;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const Degree = styled.p`
   font-size: 1.1rem;
   color: #cccccc;
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+  }
 `;
 
 const SkillsList = styled.ul`
@@ -85,6 +106,11 @@ const Skill = styled.li`
   padding: 0.75rem;
   border-radius: 6px;
   text-align: center;
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
 `;
 
 const ExperienceEntry = styled.div`
@@ -114,12 +140,20 @@ const JobHeader = styled.div`
 const JobTitle = styled.h3`
   font-size: 1.3rem;
   font-weight: 500;
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
 
 const JobLocation = styled.p`
   font-size: 1rem;
   color: #cccccc;
   text-align: right;
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+  }
 `;
 
 const JobCompany = styled.p`
@@ -127,12 +161,20 @@ const JobCompany = styled.p`
   font-style: italic;
   margin-bottom: 0.25rem;
   color: #e0e0e0;
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const JobDate = styled.p`
   font-size: 1rem;
   color: #cccccc;
   margin-bottom: 1rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+  }
 `;
 
 const JobDescription = styled.ul`
@@ -143,6 +185,9 @@ const JobDescription = styled.ul`
   li {
     margin-bottom: 0.5rem;
     line-height: 1.6;
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -162,12 +207,20 @@ const ReferenceName = styled.h3`
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const ReferenceDetail = styled.p`
   font-size: 1rem;
   color: #cccccc;
   line-height: 1.5;
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Footer = styled.footer`
@@ -188,6 +241,10 @@ const Footer = styled.footer`
     text-align: center;
     padding: 2rem;
     margin-top: 2rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 10px;
+    gap: 6px;
   }
 `;
 
