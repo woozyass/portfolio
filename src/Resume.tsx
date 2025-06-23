@@ -296,24 +296,46 @@ const IconLink = styled.a`
   }
 `;
 
-const DownloadButton = styled.a`
-  display: inline-block;
-  margin: 1rem 0 2rem 0;
-  padding: 0.4rem 1.2rem;
-  background: transparent;
-  color: #fff;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  text-decoration: none;
-  border: 1px solid #555;
-  transition: background 0.18s, color 0.18s, border 0.18s;
+const FloatingDownloadButton = styled.a`
+  position: fixed;
+  bottom: 168px;
+  right: 18px;
+  z-index: 100;
+  padding: 0.7rem 1.3rem;
+  font-size: 1.05rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
   cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 
   &:hover {
-    background: #222;
-    color: #fff;
-    border: 1px solid #888;
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px) scale(1.025);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.13);
+  }
+
+  @media (max-width: 768px) {
+    bottom: 110px;
+    right: 6px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.97rem;
+  }
+  @media (max-width: 480px) {
+    bottom: 76px;
+    right: 3px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.88rem;
   }
 `;
 
@@ -346,9 +368,6 @@ const Resume: React.FC = () => {
           <Name>John Christian Alejandro</Name>
           <ContactInfo>(+63) 977-423-8913 | alejandro.jchristian@gmail.com</ContactInfo>
         </Header>
-        <DownloadButton href="JCJA_Portfolio.pdf" download>
-          Download PDF
-        </DownloadButton>
 
         <Section>
           <SectionTitle>Education</SectionTitle>
@@ -498,6 +517,9 @@ const Resume: React.FC = () => {
           </ReferencesContainer>
         </Section>
       </ResumeContainer>
+      <FloatingDownloadButton href="JCJA_Portfolio.pdf" download>
+        Download PDF
+      </FloatingDownloadButton>
       <Footer>
         <FooterText>Christian</FooterText>
         <IconLink href="https://www.linkedin.com/in/john-christian-a-842882249/" target="_blank" rel="noopener noreferrer">
