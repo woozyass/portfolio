@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import { Link, animateScroll as scroll } from 'react-scroll';
+import { Routes, Route, Link as RouterLink } from 'react-router-dom';
+import Resume from './Resume';
 
 const glowAnimation = keyframes`
   0% {
@@ -168,10 +170,10 @@ const ServicesContainer = styled.div`
   max-width: 800px;
   width: 100%;
   text-align: center;
-
-  @media (max-width: 768px) {
-    max-width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 `;
 
 const AboutText = styled.p`
@@ -191,7 +193,7 @@ const AboutText = styled.p`
   }
 `;
 
-const ResumeButton = styled.button`
+const SharedButtonStyles = css`
   padding: 1rem 2rem;
   font-size: 1.1rem;
   background: rgba(255, 255, 255, 0.1);
@@ -202,26 +204,16 @@ const ResumeButton = styled.button`
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-  }
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-    &::before {
-      transform: translateX(100%);
-    }
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
@@ -231,6 +223,43 @@ const ResumeButton = styled.button`
 
   @media (max-width: 480px) {
     padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+`;
+
+const ResumeButton = styled(RouterLink)`
+  width: 120px;
+  height: 40px;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 80px;
+    height: 30px;
     font-size: 0.9rem;
   }
 `;
@@ -685,69 +714,18 @@ const ContactContainer = styled.div`
 `;
 
 const ContactButton = styled.button<{ isHovered: boolean }>`
-  position: relative;
+  ${SharedButtonStyles}
+
   width: 120px;
   height: 40px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  font-weight: 500;
   letter-spacing: 2px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
   &:hover {
     width: 300px;
     height: 80px;
-    border-radius: 12px;
+    /* Keep shared hover styles */
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      45deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.1) 50%,
-      transparent 100%
-    );
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
-
-  @media (max-width: 768px) {
-    width: 100px;
-    height: 35px;
-    font-size: 12px;
-    letter-spacing: 1px;
-
-    &:hover {
-      width: 250px;
-      height: 70px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    width: 80px;
-    height: 30px;
-    font-size: 10px;
-    letter-spacing: 0.5px;
-
-    &:hover {
-      width: 200px;
-      height: 60px;
-    }
   }
 `;
 
@@ -858,7 +836,7 @@ const EmailLink = styled.a`
   }
 `;
 
-const App: React.FC = () => {
+const Portfolio: React.FC = () => {
   const [hoveredStates, setHoveredStates] = useState<{ [key: string]: number | null }>({
     info: null,
     services: null,
@@ -876,6 +854,7 @@ const App: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const linkRefs = useRef<{ [key: string]: Link | null }>({});
   const [isContactHovered, setIsContactHovered] = useState(false);
+  const [isResumeHovered, setIsResumeHovered] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const projectsContainerRef = useRef<HTMLDivElement>(null);
@@ -994,10 +973,6 @@ const App: React.FC = () => {
     window.location.href = `mailto:${email}`;
   };
 
-  const handleResumeClick = () => {
-    window.open('/Alejandro_CV.pdf', '_blank');
-  };
-
   const checkScrollPosition = () => {
     if (projectsContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = projectsContainerRef.current;
@@ -1009,7 +984,7 @@ const App: React.FC = () => {
   const scrollProjects = (direction: 'left' | 'right') => {
     if (projectsContainerRef.current) {
       const container = projectsContainerRef.current;
-      const scrollAmount = 800; // Width of one project card
+      const scrollAmount = 800;
       
       if (direction === 'left') {
         container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -1017,7 +992,6 @@ const App: React.FC = () => {
         container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       }
       
-      // Check scroll position after animation
       setTimeout(checkScrollPosition, 500);
     }
   };
@@ -1026,7 +1000,7 @@ const App: React.FC = () => {
     const container = projectsContainerRef.current;
     if (container) {
       container.addEventListener('scroll', checkScrollPosition);
-      checkScrollPosition(); // Initial check
+      checkScrollPosition();
       
       return () => {
         container.removeEventListener('scroll', checkScrollPosition);
@@ -1045,10 +1019,10 @@ const App: React.FC = () => {
 
       <InfoSection id="info" isVisible={visibleSections.info}>
         <InfoContainer>
-        <InfoText>
+          <InfoText>
             {displayedInfoText}
             <Cursor />
-        </InfoText>
+          </InfoText>
         </InfoContainer>
       </InfoSection>
 
@@ -1057,7 +1031,7 @@ const App: React.FC = () => {
           <AboutText>
             I'm Christian—a Front-end Web Developer and Designer from the Philippines. My love for building and designing websites started during a Web Dev subject back in college. Since then, I've spent countless hours cramming, binge-watching YouTube tutorials, and messing around with code 'til everything finally clicked. For over five years now, I've been crafting websites using WordPress, and more recently, diving deeper into JavaScript and JS frameworks to level up my skills. I'm all about creating sites that don't just work—they feel smooth, look fresh, and leave a mark. Let's build something awesome!
           </AboutText>
-          <ResumeButton onClick={handleResumeClick}>
+          <ResumeButton to="/resume">
             Resume
           </ResumeButton>
         </ServicesContainer>
@@ -1203,6 +1177,15 @@ const App: React.FC = () => {
         )}
       </Modal>
     </AppContainer>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Portfolio />} />
+      <Route path="/resume" element={<Resume />} />
+    </Routes>
   );
 };
 
