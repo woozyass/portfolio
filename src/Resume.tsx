@@ -121,6 +121,16 @@ const Skill = styled.li`
   }
 `;
 
+const JobType = styled.p`
+  font-size: 1rem;
+  color: #8ecae6;
+  font-weight: 500;
+  margin-bottom: 0.1rem;
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
+`;
+
 const ExperienceEntry = styled.div`
   margin-bottom: 2rem;
   position: relative;
@@ -140,15 +150,10 @@ const ExperienceEntry = styled.div`
 
 const JobHeader = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: flex-start;
   margin-bottom: 0.5rem;
-
-  @media (max-width: 480px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.2rem;
-  }
+  gap: 0.1rem;
 `;
 
 const JobTitle = styled.h3`
@@ -338,11 +343,12 @@ const Resume: React.FC = () => {
           <SectionTitle>Professional Experience</SectionTitle>
           <ExperienceEntry>
             <JobHeader>
-              <JobTitle>Part-time Full Stack Developer</JobTitle>
+              <JobTitle>Full Stack Developer</JobTitle>
+              <JobType>Part-time</JobType>
+              <JobCompany>Fitera</JobCompany>
               <JobLocation>Ortigas, Pasig City</JobLocation>
+              <JobDate>April 2025 - Present</JobDate>
             </JobHeader>
-            <JobCompany>Fitera</JobCompany>
-            <JobDate>April 2025 - Present</JobDate>
             <JobDescription>
               <li>Developed the website of the company using React/NodeJS.</li>
               <li>Maintains website and creates new posting for company updates.</li>
@@ -352,10 +358,11 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <JobHeader>
               <JobTitle>Frontend Developer</JobTitle>
+              <JobType>Full-time</JobType>
+              <JobCompany>Speedrent Technologies</JobCompany>
               <JobLocation>Kuala Lumpur, Malaysia</JobLocation>
+              <JobDate>June 2023 - Present</JobDate>
             </JobHeader>
-            <JobCompany>Speedrent Technologies</JobCompany>
-            <JobDate>June 2023 - Present</JobDate>
             <JobDescription>
               <li>Developed user-facing features using Next.js to ensure seamless user experiences.</li>
               <li>Optimized components for performance across various devices and browsers.</li>
@@ -366,10 +373,11 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <JobHeader>
               <JobTitle>Teammate - Subject Matter Expert</JobTitle>
+              <JobType>Full-time</JobType>
+              <JobCompany>Task Us</JobCompany>
               <JobLocation>Ortigas, Pasig City</JobLocation>
+              <JobDate>June 2022 - August 2023</JobDate>
             </JobHeader>
-            <JobCompany>Task Us</JobCompany>
-            <JobDate>June 2022 - August 2023</JobDate>
             <JobDescription>
               <li>Produced Quality service with by the book information.</li>
               <li>Assisted customers in a daily basis without compromising adherence and performance.</li>
@@ -380,10 +388,11 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <JobHeader>
               <JobTitle>Subject Matter Expert</JobTitle>
+              <JobType>Full-time</JobType>
+              <JobCompany>KGB Philippines</JobCompany>
               <JobLocation>Pasig City</JobLocation>
+              <JobDate>December 2019 - June 2022</JobDate>
             </JobHeader>
-            <JobCompany>KGB Philippines</JobCompany>
-            <JobDate>December 2019 - June 2022</JobDate>
             <JobDescription>
               <li>Providing the book information and ensuring strict adherence to agents.</li>
               <li>Providing knowledge, resources and information to support agents.</li>
@@ -397,10 +406,11 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <JobHeader>
               <JobTitle>Customer Service Representative</JobTitle>
+              <JobType>Full-time</JobType>
+              <JobCompany>GICF Inc</JobCompany>
               <JobLocation>Pasig City</JobLocation>
+              <JobDate>June 2018 - July 2019</JobDate>
             </JobHeader>
-            <JobCompany>GICF Inc</JobCompany>
-            <JobDate>June 2018 - July 2019</JobDate>
             <JobDescription>
               <li>Providing excellent customer service to shopping company customers.</li>
               <li>Keep records of customer interactions, process customer accounts and file documents.</li>
