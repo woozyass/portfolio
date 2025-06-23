@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link as RouterLink } from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
 
 const PageWrapper = styled.div`
   background-color: #000000;
@@ -299,7 +300,7 @@ const IconLink = styled.a`
 const FloatingDownloadButton = styled.a`
   position: fixed;
   bottom: 168px;
-  right: 18px;
+  right: 60px;
   z-index: 100;
   padding: 0.7rem 1.3rem;
   font-size: 1.05rem;
@@ -327,13 +328,13 @@ const FloatingDownloadButton = styled.a`
 
   @media (max-width: 768px) {
     bottom: 110px;
-    right: 6px;
+    right: 30px;
     padding: 0.5rem 0.9rem;
     font-size: 0.97rem;
   }
   @media (max-width: 480px) {
     bottom: 76px;
-    right: 3px;
+    right: 12px;
     padding: 0.4rem 0.6rem;
     font-size: 0.88rem;
   }
@@ -359,9 +360,21 @@ const HomeButton = styled(RouterLink)`
   }
 `;
 
+const ResumeExtraStyles = createGlobalStyle`
+  .resume-bottom-spacer {
+    height: 180px;
+  }
+  @media (max-width: 480px) {
+    .resume-bottom-spacer {
+      height: 60px;
+    }
+  }
+`;
+
 const Resume: React.FC = () => {
   return (
     <PageWrapper>
+      <ResumeExtraStyles />
       <ResumeContainer>
         <HomeButton to="/">← Home</HomeButton>
         <Header>
@@ -517,6 +530,7 @@ const Resume: React.FC = () => {
           </ReferencesContainer>
         </Section>
       </ResumeContainer>
+      <div style={{ height: '180px' }} className="resume-bottom-spacer" />
       <FloatingDownloadButton href="JCJA_Portfolio.pdf" download>
         Download PDF
       </FloatingDownloadButton>
