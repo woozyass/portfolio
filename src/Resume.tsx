@@ -346,7 +346,7 @@ const Resume: React.FC = () => {
           <Name>John Christian Alejandro</Name>
           <ContactInfo>(+63) 977-423-8913 | alejandro.jchristian@gmail.com</ContactInfo>
         </Header>
-        <DownloadButton href="/JCJA_Portfolio.pdf" download>
+        <DownloadButton href="JCJA_Portfolio.pdf" download>
           Download PDF
         </DownloadButton>
 
