@@ -31,6 +31,10 @@
       "dest": "/Alejandro_CV.pdf"
     },
     {
+      "src": "/JCJA_Portfolio.pdf",
+      "dest": "/JCJA_Portfolio.pdf"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
