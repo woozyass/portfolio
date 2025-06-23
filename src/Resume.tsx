@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link as RouterLink } from 'react-router-dom';
 
 const PageWrapper = styled.div`
   background-color: #000000;
@@ -316,10 +317,31 @@ const DownloadButton = styled.a`
   }
 `;
 
+const HomeButton = styled(RouterLink)`
+  display: inline-block;
+  margin: 0 0 1.2rem 0;
+  padding: 0.3rem 1rem 0.3rem 0;
+  background: none;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.97rem;
+  font-weight: 500;
+  text-decoration: underline;
+  transition: color 0.18s;
+  cursor: pointer;
+
+  &:hover {
+    color: #8ecae6;
+    text-decoration: underline;
+  }
+`;
+
 const Resume: React.FC = () => {
   return (
     <PageWrapper>
       <ResumeContainer>
+        <HomeButton to="/">← Home</HomeButton>
         <Header>
           <Name>John Christian Alejandro</Name>
           <ContactInfo>(+63) 977-423-8913 | alejandro.jchristian@gmail.com</ContactInfo>
