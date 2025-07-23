@@ -37,7 +37,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/portfolio">
       <GlobalStyle />
       <App />
     </BrowserRouter>
