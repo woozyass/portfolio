@@ -988,21 +988,21 @@ const Portfolio: React.FC = () => {
               <GalleryContainer>
                 <LargeImageContainer>
                   <GalleryImage 
-                    src={process.env.PUBLIC_URL + "/photos/photos_home.png"} 
+                    src="/photos/photos_home.png" 
                     alt="Rental Platform Home"
-                    onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos_home.png")}
+                    onClick={() => handleImageClick("/photos/photos_home.png")}
                     isLarge={true}
                   />
                 </LargeImageContainer>
                 <GalleryImage 
-                  src={process.env.PUBLIC_URL + "/photos/photos_listing.png"} 
+                  src="/photos/photos_listing.png" 
                   alt="Rental Platform Listing"
-                  onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos_listing.png")}
+                  onClick={() => handleImageClick("/photos/photos_listing.png")}
                 />
                 <GalleryImage 
-                  src={process.env.PUBLIC_URL + "/photos/photos_main.png"} 
+                  src="/photos/photos_main.png" 
                   alt="Rental Platform Main"
-                  onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos_main.png")}
+                  onClick={() => handleImageClick("/photos/photos_main.png")}
                 />
               </GalleryContainer>
             </ProjectCard>
@@ -1024,21 +1024,21 @@ const Portfolio: React.FC = () => {
               <GalleryContainer>
                 <LargeImageContainer>
                   <GalleryImage 
-                    src={process.env.PUBLIC_URL + "/photos/photos-home-2.png"} 
+                    src="/photos/photos-home-2.png" 
                     alt="E-commerce Home"
-                    onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos-home-2.png")}
+                    onClick={() => handleImageClick("/photos/photos-home-2.png")}
                     isLarge={true}
                   />
                 </LargeImageContainer>
                 <GalleryImage 
-                  src={process.env.PUBLIC_URL + "/photos/photos-listing-2.png"} 
+                  src="/photos/photos-listing-2.png" 
                   alt="E-commerce Products"
-                  onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos-listing-2.png")}
+                  onClick={() => handleImageClick("/photos/photos-listing-2.png")}
                 />
                 <GalleryImage 
-                  src={process.env.PUBLIC_URL + "/photos/photos-main-2.png"} 
+                  src="/photos/photos-main-2.png" 
                   alt="E-commerce Cart"
-                  onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos-main-2.png")}
+                  onClick={() => handleImageClick("/photos/photos-main-2.png")}
                 />
               </GalleryContainer>
             </ProjectCard>
