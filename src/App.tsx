@@ -933,10 +933,10 @@ const Portfolio: React.FC = () => {
   return (
     <AppContainer>
       <NavBar>
-        {renderNavLink('info', '/info')}
-        {renderNavLink('services', '/about')}
-        {renderNavLink('projects', '/projects')}
-        {renderNavLink('contact', '/contact')}
+        {renderNavLink('info', 'Info')}
+        {renderNavLink('services', 'About')}
+        {renderNavLink('projects', 'Projects')}
+        {renderNavLink('contact', 'Contact')}
       </NavBar>
 
       <InfoSection id="info" isVisible={visibleSections.info}>
@@ -951,7 +951,7 @@ const Portfolio: React.FC = () => {
       <ServicesSection id="services" isVisible={visibleSections.services}>
         <ServicesContainer>
           <AboutText>
-            I'm Christian—a Front-end Web Developer and Designer from the Philippines. My love for building and designing websites started during a Web Dev subject back in college. Since then, I've spent countless hours cramming, binge-watching YouTube tutorials, and messing around with code 'til everything finally clicked. For over five years now, I've been crafting websites using WordPress, and more recently, diving deeper into JavaScript and JS frameworks to level up my skills. I'm all about creating sites that don't just work—they feel smooth, look fresh, and leave a mark. Let's build something awesome!
+            I'm Christian—a Fullstack Developer and Designer from the Philippines. My love for building and designing websites started during a Web Dev subject back in college. Since then, I've spent countless hours cramming, binge-watching YouTube tutorials, and messing around with code 'til everything finally clicked. For over five years now, I've been crafting websites using WordPress, and more recently, diving deeper into JavaScript and JS frameworks to level up my skills. I'm all about creating sites that don't just work—they feel smooth, look fresh, and leave a mark. Let's build something awesome!
           </AboutText>
           <ResumeButton to="/resume">
             Resume

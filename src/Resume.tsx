@@ -57,6 +57,17 @@ const ContactInfo = styled.p`
   }
 `;
 
+const Title = styled.p`
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin-top: 0.25rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.12);
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
+`;
+
 const Section = styled.section`
   margin-bottom: 2.5rem;
 `;
@@ -367,6 +378,7 @@ const Resume: React.FC = () => {
         <HomeButton to="/">← Home</HomeButton>
         <Header>
           <Name>John Christian Alejandro</Name>
+          <Title>Fullstack Developer</Title>
           <ContactInfo>(+63) 977-423-8913 | alejandro.jchristian@gmail.com</ContactInfo>
         </Header>
 
@@ -392,6 +404,7 @@ const Resume: React.FC = () => {
             <Skill>Google Workspace</Skill>
             <Skill>Customer Service</Skill>
             <Skill>Technical Support</Skill>
+            <Skill>ServiceNow</Skill>
           </SkillsList>
         </Section>
 
@@ -400,10 +413,26 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <div className="job-header-wrapper">
               <JobHeader>
+                <JobTitle>Senior Software Engineer</JobTitle>
+                <JobCompany>Accenture</JobCompany>
+                <JobLocation>Manila, Philippines</JobLocation>
+                <JobDate>Oct 2025 – Present</JobDate>
+              </JobHeader>
+            </div>
+            <JobDescription>
+              <li>Designing and building scalable fullstack solutions for enterprise clients using modern JavaScript frameworks.</li>
+              <li>Collaborating with cross-functional teams to deliver high-quality, maintainable software on schedule.</li>
+              <li>Mentoring junior developers and contributing to best practices in code quality and architecture.</li>
+            </JobDescription>
+          </ExperienceEntry>
+
+          <ExperienceEntry>
+            <div className="job-header-wrapper">
+              <JobHeader>
                 <JobTitle>Full-Stack Developer</JobTitle>
                 <JobCompany>Fitera Systems, Inc.</JobCompany>
                 <JobLocation>Ortigas, Pasig City</JobLocation>
-                <JobDate>May 2025 – Present</JobDate>
+                <JobDate>May 2025 – Sep 2025</JobDate>
               </JobHeader>
             </div>
             <JobDescription>
@@ -418,7 +447,7 @@ const Resume: React.FC = () => {
                 <JobTitle>Software Developer</JobTitle>
                 <JobCompany>Speedrent Technologies</JobCompany>
                 <JobLocation>Kuala Lumpur, Malaysia</JobLocation>
-                <JobDate>Oct 2023 – Present</JobDate>
+                <JobDate>Oct 2023 – Apr 2025</JobDate>
               </JobHeader>
             </div>
             <JobDescription>
