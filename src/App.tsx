@@ -581,7 +581,8 @@ const GalleryContainer = styled.div`
 
 const GalleryImage = styled.img<{ isLarge?: boolean }>`
   width: 100%;
-  height: ${props => props.isLarge ? '100%' : '100%'};
+  height: auto;
+  aspect-ratio: ${props => props.isLarge ? '16 / 9' : '16 / 9'};
   object-fit: cover;
   border-radius: 12px;
   transition: transform 0.3s ease;
@@ -594,7 +595,6 @@ const GalleryImage = styled.img<{ isLarge?: boolean }>`
 
   @media (max-width: 480px) {
     border-radius: 8px;
-    height: 200px;
   }
 `;
 
@@ -951,7 +951,7 @@ const Portfolio: React.FC = () => {
       <ServicesSection id="services" isVisible={visibleSections.services}>
         <ServicesContainer>
           <AboutText>
-            I'm Christian—a Front-end Web Developer and Designer from the Philippines. My love for building and designing websites started during a Web Dev subject back in college. Since then, I've spent countless hours cramming, binge-watching YouTube tutorials, and messing around with code 'til everything finally clicked. For over five years now, I've been crafting websites using WordPress, and more recently, diving deeper into JavaScript and JS frameworks to level up my skills. I'm all about creating sites that don't just work—they feel smooth, look fresh, and leave a mark. Let's build something awesome!
+            I'm Christian, a Fullstack Web Developer and Designer from the Philippines. I build end-to-end web experiences from clean, responsive UIs to reliable backends, and I also work with ServiceNow for enterprise workflows and automation. Let's build something awesome!
           </AboutText>
           <ResumeButton to="/resume">
             Resume
@@ -988,21 +988,21 @@ const Portfolio: React.FC = () => {
               <GalleryContainer>
                 <LargeImageContainer>
                   <GalleryImage 
-                    src="photos/photos_home.png" 
+                    src={process.env.PUBLIC_URL + "/photos/photos_home.png"} 
                     alt="Rental Platform Home"
-                    onClick={() => handleImageClick('photos/photos_home.png')}
+                    onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos_home.png")}
                     isLarge={true}
                   />
                 </LargeImageContainer>
                 <GalleryImage 
-                  src="photos/photos_listing.png" 
+                  src={process.env.PUBLIC_URL + "/photos/photos_listing.png"} 
                   alt="Rental Platform Listing"
-                  onClick={() => handleImageClick('photos/photos_listing.png')}
+                  onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos_listing.png")}
                 />
                 <GalleryImage 
-                  src="photos/photos_main.png" 
+                  src={process.env.PUBLIC_URL + "/photos/photos_main.png"} 
                   alt="Rental Platform Main"
-                  onClick={() => handleImageClick('photos/photos_main.png')}
+                  onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos_main.png")}
                 />
               </GalleryContainer>
             </ProjectCard>
@@ -1024,21 +1024,21 @@ const Portfolio: React.FC = () => {
               <GalleryContainer>
                 <LargeImageContainer>
                   <GalleryImage 
-                    src="photos/photos-home-2.png" 
+                    src={process.env.PUBLIC_URL + "/photos/photos-home-2.png"} 
                     alt="E-commerce Home"
-                    onClick={() => handleImageClick('photos/photos-home-2.png')}
+                    onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos-home-2.png")}
                     isLarge={true}
                   />
                 </LargeImageContainer>
                 <GalleryImage 
-                  src="photos/photos-listing-2.png" 
+                  src={process.env.PUBLIC_URL + "/photos/photos-listing-2.png"} 
                   alt="E-commerce Products"
-                  onClick={() => handleImageClick('photos/photos-listing-2.png')}
+                  onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos-listing-2.png")}
                 />
                 <GalleryImage 
-                  src="photos/photos-main-2.png" 
+                  src={process.env.PUBLIC_URL + "/photos/photos-main-2.png"} 
                   alt="E-commerce Cart"
-                  onClick={() => handleImageClick('photos/photos-main-2.png')}
+                  onClick={() => handleImageClick(process.env.PUBLIC_URL + "/photos/photos-main-2.png")}
                 />
               </GalleryContainer>
             </ProjectCard>

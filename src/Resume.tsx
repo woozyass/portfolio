@@ -392,11 +392,29 @@ const Resume: React.FC = () => {
             <Skill>Google Workspace</Skill>
             <Skill>Customer Service</Skill>
             <Skill>Technical Support</Skill>
+            <Skill>ServiceNow</Skill>
+            <Skill>IoT</Skill>
           </SkillsList>
         </Section>
 
         <Section>
           <SectionTitle>Professional Experience</SectionTitle>
+          <ExperienceEntry>
+            <div className="job-header-wrapper">
+              <JobHeader>
+                <JobTitle>Senior Software Engineer</JobTitle>
+                <JobCompany>Accenture Philippines</JobCompany>
+                <JobLocation>Manila, Philippines</JobLocation>
+                <JobDate>Oct 2025 – Present</JobDate>
+              </JobHeader>
+            </div>
+            <JobDescription>
+              <li>Design and build fullstack solutions for enterprise clients, with a focus on ServiceNow-based workflows and automation.</li>
+              <li>Collaborate with cross-functional teams to implement scalable, maintainable platform features.</li>
+              <li>Integrate ServiceNow with other systems to improve operational efficiency and service delivery.</li>
+            </JobDescription>
+          </ExperienceEntry>
+
           <ExperienceEntry>
             <div className="job-header-wrapper">
               <JobHeader>
@@ -418,7 +436,7 @@ const Resume: React.FC = () => {
                 <JobTitle>Software Developer</JobTitle>
                 <JobCompany>Speedrent Technologies</JobCompany>
                 <JobLocation>Kuala Lumpur, Malaysia</JobLocation>
-                <JobDate>Oct 2023 – Present</JobDate>
+                <JobDate>Oct 2023 – Oct 2025</JobDate>
               </JobHeader>
             </div>
             <JobDescription>
