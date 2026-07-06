@@ -47,13 +47,81 @@ const Name = styled.h1`
   }
 `;
 
-const ContactInfo = styled.p`
-  font-size: 1.1rem;
+const ContactInfo = styled.div`
+  font-size: 1rem;
   color: #bdbdbd;
   text-shadow: 0 1px 2px rgba(0,0,0,0.10);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
 
   @media (max-width: 480px) {
     font-size: 0.75rem;
+  }
+`;
+
+const ContactLine = styled.p`
+  margin: 0;
+`;
+
+const ContactLink = styled.a`
+  color: #8ecae6;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const ProfileText = styled.p`
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #ededed;
+  margin-bottom: 1rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
+`;
+
+const SkillsGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+const SkillCategory = styled.div``;
+
+const SkillCategoryTitle = styled.h3`
+  font-size: 1rem;
+  font-weight: 600;
+  color: #8ecae6;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
+`;
+
+const SkillTags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+const SkillTag = styled.span`
+  font-size: 0.95rem;
+  background-color: #1a1a1a;
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  color: #f8f8f8;
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.65rem;
   }
 `;
 
@@ -98,27 +166,6 @@ const Degree = styled.p`
 
   @media (max-width: 480px) {
     font-size: 0.75rem;
-  }
-`;
-
-const SkillsList = styled.ul`
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-`;
-
-const Skill = styled.li`
-  font-size: 1.1rem;
-  background-color: #1a1a1a;
-  padding: 0.75rem;
-  border-radius: 6px;
-  text-align: center;
-  color: #f8f8f8;
-
-  @media (max-width: 480px) {
-    font-size: 0.8rem;
-    padding: 0.5rem;
   }
 `;
 
@@ -366,9 +413,26 @@ const Resume: React.FC = () => {
       <ResumeContainer>
         <HomeButton to="/">← Home</HomeButton>
         <Header>
-          <Name>John Christian Alejandro</Name>
-          <ContactInfo>(+63) 977-423-8913 | alejandro.jchristian@gmail.com</ContactInfo>
+          <Name>JOHN CHRISTIAN ALEJANDRO</Name>
+          <ContactInfo>
+            <ContactLine>📍 Pasig City, Metro Manila, Philippines</ContactLine>
+            <ContactLine>📞 (+63) 977-423-8913</ContactLine>
+            <ContactLine>✉️ <ContactLink href="mailto:alejandro.jchristian@gmail.com">alejandro.jchristian@gmail.com</ContactLink></ContactLine>
+            <ContactLine>💻 GitHub: <ContactLink href="https://github.com/woozyass" target="_blank" rel="noopener noreferrer">github.com/woozyass</ContactLink></ContactLine>
+            <ContactLine>🌐 Portfolio: <ContactLink href="/">View Portfolio</ContactLink></ContactLine>
+            <ContactLine>🔗 LinkedIn: <ContactLink href="https://www.linkedin.com/in/jcalejandro/" target="_blank" rel="noopener noreferrer">linkedin.com/in/jcalejandro</ContactLink></ContactLine>
+          </ContactInfo>
         </Header>
+
+        <Section>
+          <SectionTitle>Professional Profile</SectionTitle>
+          <ProfileText>
+            Senior ServiceNow Developer with experience designing, developing, and maintaining enterprise ServiceNow solutions across ITSM and custom business applications. Experienced in building integrations, automating business processes through Flow Designer, configuring Service Portal components, and supporting Agile delivery as a Substitute Scrum Master. Strong background in full-stack web development using React, Next.js, and Node.js, complemented by several years of customer service and technical support experience.
+          </ProfileText>
+          <ProfileText>
+            Skilled in translating business requirements into scalable technical solutions while collaborating with cross-functional teams to deliver high-quality enterprise applications.
+          </ProfileText>
+        </Section>
 
         <Section>
           <SectionTitle>Education</SectionTitle>
@@ -381,20 +445,57 @@ const Resume: React.FC = () => {
         </Section>
 
         <Section>
-          <SectionTitle>Skills</SectionTitle>
-          <SkillsList>
-            <Skill>HTML/CSS</Skill>
-            <Skill>JavaScript</Skill>
-            <Skill>ReactJS</Skill>
-            <Skill>NextJS</Skill>
-            <Skill>Flutter</Skill>
-            <Skill>UI/UX Design</Skill>
-            <Skill>Google Workspace</Skill>
-            <Skill>Customer Service</Skill>
-            <Skill>Technical Support</Skill>
-            <Skill>ServiceNow</Skill>
-            <Skill>IoT</Skill>
-          </SkillsList>
+          <SectionTitle>Technical Skills</SectionTitle>
+          <SkillsGrid>
+            <SkillCategory>
+              <SkillCategoryTitle>ServiceNow</SkillCategoryTitle>
+              <SkillTags>
+                {['ITSM', 'Flow Designer', 'IntegrationHub', 'Script Includes', 'Business Rules', 'Client Scripts', 'UI Policies', 'UI Actions', 'ACLs', 'Service Portal', 'Catalog Items', 'Record Producers', 'Workflows', 'Scripted REST APIs', 'Inbound Actions', 'Notifications', 'Update Sets'].map(skill => (
+                  <SkillTag key={skill}>{skill}</SkillTag>
+                ))}
+              </SkillTags>
+            </SkillCategory>
+            <SkillCategory>
+              <SkillCategoryTitle>Programming</SkillCategoryTitle>
+              <SkillTags>
+                {['JavaScript (ES6+)', 'HTML5', 'CSS3', 'React.js', 'Next.js', 'Node.js', 'Flutter'].map(skill => (
+                  <SkillTag key={skill}>{skill}</SkillTag>
+                ))}
+              </SkillTags>
+            </SkillCategory>
+            <SkillCategory>
+              <SkillCategoryTitle>Databases</SkillCategoryTitle>
+              <SkillTags>
+                {['MySQL', 'MongoDB'].map(skill => (
+                  <SkillTag key={skill}>{skill}</SkillTag>
+                ))}
+              </SkillTags>
+            </SkillCategory>
+            <SkillCategory>
+              <SkillCategoryTitle>Development Tools</SkillCategoryTitle>
+              <SkillTags>
+                {['Git', 'GitHub', 'Visual Studio Code', 'Postman'].map(skill => (
+                  <SkillTag key={skill}>{skill}</SkillTag>
+                ))}
+              </SkillTags>
+            </SkillCategory>
+            <SkillCategory>
+              <SkillCategoryTitle>Methodologies</SkillCategoryTitle>
+              <SkillTags>
+                {['Agile Scrum', 'SDLC', 'REST APIs'].map(skill => (
+                  <SkillTag key={skill}>{skill}</SkillTag>
+                ))}
+              </SkillTags>
+            </SkillCategory>
+            <SkillCategory>
+              <SkillCategoryTitle>Other Skills</SkillCategoryTitle>
+              <SkillTags>
+                {['UI/UX Design', 'Technical Documentation', 'Customer Support', 'Google Workspace'].map(skill => (
+                  <SkillTag key={skill}>{skill}</SkillTag>
+                ))}
+              </SkillTags>
+            </SkillCategory>
+          </SkillsGrid>
         </Section>
 
         <Section>
@@ -402,16 +503,24 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <div className="job-header-wrapper">
               <JobHeader>
-                <JobTitle>Senior Software Engineer</JobTitle>
+                <JobTitle>Senior ServiceNow Developer</JobTitle>
                 <JobCompany>Accenture Philippines</JobCompany>
-                <JobLocation>Manila, Philippines</JobLocation>
-                <JobDate>Oct 2025 – Present</JobDate>
+                <JobLocation>BGC, Taguig City</JobLocation>
+                <JobDate>October 2025 to Present</JobDate>
               </JobHeader>
             </div>
             <JobDescription>
-              <li>Design and build fullstack solutions for enterprise clients, with a focus on ServiceNow-based workflows and automation.</li>
-              <li>Collaborate with cross-functional teams to implement scalable, maintainable platform features.</li>
-              <li>Integrate ServiceNow with other systems to improve operational efficiency and service delivery.</li>
+              <li>Developed and configured enterprise ServiceNow solutions for multiple business requirements.</li>
+              <li>Designed and implemented integrations between ServiceNow and external platforms using REST APIs and IntegrationHub.</li>
+              <li>Built and maintained Flow Designer automations to streamline business processes.</li>
+              <li>Configured Service Portal widgets, pages, themes, and catalogs according to project requirements.</li>
+              <li>Developed Business Rules, Client Scripts, Script Includes, UI Policies, UI Actions, and Access Controls.</li>
+              <li>Created and maintained Catalog Items, Record Producers, and Service Catalog workflows.</li>
+              <li>Troubleshoot production issues and perform root cause analysis.</li>
+              <li>Participated in sprint planning, backlog grooming, and Agile ceremonies.</li>
+              <li>Served as Substitute Scrum Master, facilitating stand-ups, sprint ceremonies, and team coordination.</li>
+              <li>Worked closely with business stakeholders, QA engineers, and developers to deliver scalable ServiceNow solutions.</li>
+              <li>Assisted with platform upgrades, deployments, testing, and production releases.</li>
             </JobDescription>
           </ExperienceEntry>
 
@@ -421,7 +530,7 @@ const Resume: React.FC = () => {
                 <JobTitle>Full-Stack Developer</JobTitle>
                 <JobCompany>Fitera Systems, Inc.</JobCompany>
                 <JobLocation>Ortigas, Pasig City</JobLocation>
-                <JobDate>May 2025 – Present</JobDate>
+                <JobDate>May 2025 to October 2025</JobDate>
               </JobHeader>
             </div>
             <JobDescription>
@@ -436,7 +545,7 @@ const Resume: React.FC = () => {
                 <JobTitle>Software Developer</JobTitle>
                 <JobCompany>Speedrent Technologies</JobCompany>
                 <JobLocation>Kuala Lumpur, Malaysia</JobLocation>
-                <JobDate>Oct 2023 – Oct 2025</JobDate>
+                <JobDate>Oct 2023 to Oct 2025</JobDate>
               </JobHeader>
             </div>
             <JobDescription>
@@ -449,10 +558,10 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <div className="job-header-wrapper">
               <JobHeader>
-                <JobTitle>Teammate - Subject Matter Expert</JobTitle>
+                <JobTitle>Teammate, Subject Matter Expert</JobTitle>
                 <JobCompany>TaskUs</JobCompany>
                 <JobLocation>Ortigas, Pasig City</JobLocation>
-                <JobDate>Jun 2022 – Aug 2023</JobDate>
+                <JobDate>Jun 2022 to Aug 2023</JobDate>
               </JobHeader>
             </div>
             <JobDescription>
@@ -465,10 +574,10 @@ const Resume: React.FC = () => {
           <ExperienceEntry>
             <div className="job-header-wrapper">
               <JobHeader>
-                <JobTitle>Agent - Subject Matter Expert</JobTitle>
+                <JobTitle>Agent, Subject Matter Expert</JobTitle>
                 <JobCompany>Conduit Global</JobCompany>
                 <JobLocation></JobLocation>
-                <JobDate>Dec 2019 – Jun 2021</JobDate>
+                <JobDate>Dec 2019 to Jun 2021</JobDate>
               </JobHeader>
             </div>
             <JobDescription>
@@ -485,7 +594,7 @@ const Resume: React.FC = () => {
                 <JobTitle>Customer Service Representative</JobTitle>
                 <JobCompany>GICF</JobCompany>
                 <JobLocation>Pasig City</JobLocation>
-                <JobDate>Jun 2018 – Jul 2019</JobDate>
+                <JobDate>Jun 2018 to Jul 2019</JobDate>
               </JobHeader>
             </div>
             <JobDescription>
@@ -504,7 +613,7 @@ const Resume: React.FC = () => {
                 <JobTitle>Customer Service Representative</JobTitle>
                 <JobCompany>Sequential Technology International</JobCompany>
                 <JobLocation>Eastwood, Quezon City</JobLocation>
-                <JobDate>Jan 2016 – Apr 2017</JobDate>
+                <JobDate>Jan 2016 to Apr 2017</JobDate>
               </JobHeader>
             </div>
             <JobDescription>
@@ -544,7 +653,7 @@ const Resume: React.FC = () => {
       <div style={{ height: '40px' }} />
       <Footer>
         <FooterText>Christian</FooterText>
-        <IconLink href="https://www.linkedin.com/in/john-christian-a-842882249/" target="_blank" rel="noopener noreferrer">
+        <IconLink href="https://www.linkedin.com/in/jcalejandro/" target="_blank" rel="noopener noreferrer">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
           </svg>
